@@ -112,3 +112,20 @@ button:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
+
+@media (max-width: 300px) {
+  .Screen {
+    width: 100%;
+  }
+  .LoginSignup {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+  .container {
+    width: 100%;
+  }
+  form div {
+    flex-direction: column;
+  }
+}
