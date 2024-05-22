@@ -113,6 +113,13 @@ button:hover {
   transform: scale(1.05);
 }
 
+ul{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 5px;
+}
+
 @media (max-width: 300px) {
   .Screen {
     width: 100%;

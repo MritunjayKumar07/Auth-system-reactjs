@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { userSignUp } from "../../API/user";
 
 function Signup({ pageSelect }) {
   const [signup, setSignup] = useState({
@@ -12,9 +13,14 @@ function Signup({ pageSelect }) {
     setSignup({ ...signup, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(signup);
+    if (!signup.email.includes("@") || !signup.email.includes("."))
+      alert(" Enter valid email Id");
+    if (signup.name.length <= 3)
+      alert("Name shood by grater than three character");
+
+    await userSignUp(signup);
   };
   return (
     <div className="container">

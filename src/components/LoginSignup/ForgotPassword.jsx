@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { userForgotPassword } from "../../API/user";
 
 function ForgotPassword({ pageSelect }) {
   const [email, setEmail] = useState("");
   const pageSelectLogin = () => pageSelect("login");
   const pageSelectSignup = () => pageSelect("signup");
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email.includes("@") || !email.includes("."))
+      alert(" Enter valid email Id");
     console.log(email);
+    await userForgotPassword({ email });
   };
   return (
     <div className="container">

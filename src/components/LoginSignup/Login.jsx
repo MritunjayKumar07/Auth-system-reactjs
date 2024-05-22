@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { userLogin } from "../../API/user";
 
 function Login({ pageSelect }) {
   const [login, setLogin] = useState({
@@ -10,9 +11,13 @@ function Login({ pageSelect }) {
   const handleChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(login);
+    if (!login.email.includes("@") || !login.email.includes("."))
+      alert(" Enter valid email Id");
+    if (!login.password) alert(" Password required!");
+    await userLogin(login);
   };
   return (
     <div className="container">
