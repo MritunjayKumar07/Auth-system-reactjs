@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import bgImage from "../../assert/LoginSignup/4.jpg";
 import "../../screen/login_signup/login.css";
 import { createPassword } from "../../API/user";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function CreatePassword() {
   const { email, code } = useParams();
+  const navigate = useNavigate();
   const [password, setPassword] = useState({ password: "", newPassword: "" });
   const [passwordChaker, setPasswordChaker] = useState({
     charactersSix: null,
@@ -45,6 +46,7 @@ function CreatePassword() {
       }
       console.log(password);
       await createPassword({ code, email, password: password.password });
+      navigate("/");
     }
   };
 
