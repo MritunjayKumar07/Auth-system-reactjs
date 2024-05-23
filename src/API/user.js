@@ -1,14 +1,14 @@
 import Cookies from "js-cookie";
 
 function deleteCookie(cookieName) {
-  // document.cookie = `${cookieName}=; path/ expires=Thu, 01 Jan 1970 00:00:00 UTC; secure`;
-  document.cookie = `${cookieName}=; path/ expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+  document.cookie = `${cookieName}=; path/ expires=Thu, 01 Jan 1970 00:00:00 UTC; secure`;
+  // document.cookie = `${cookieName}=; path/ expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
 }
 
 const userSignUp = async (body) => {
   // console.log(body);
   try {
-    const res = await fetch("http://localhost:8000/api/v1/user/register", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ const createPassword = async (body) => {
   // console.log(body);
   try {
     const res = await fetch(
-      "http://localhost:8000/api/v1/user/create-password",
+      `${process.env.REACT_APP_API_URL}/create-password`,
       {
         method: "POST",
         headers: {
@@ -49,7 +49,7 @@ const createPassword = async (body) => {
 const userForgotPassword = async (body) => {
   try {
     const res = await fetch(
-      "http://localhost:8000/api/v1/user/forgot-password",
+      `${process.env.REACT_APP_API_URL}/forgot-password`,
       {
         method: "POST",
         headers: {
@@ -68,7 +68,7 @@ const userForgotPassword = async (body) => {
 
 const userLogin = async (body) => {
   try {
-    const res = await fetch("http://localhost:8000/api/v1/user/login", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,10 +84,10 @@ const userLogin = async (body) => {
       /*1.The document.cookie property is used to set cookies.
       2.path=/ ensures the cookie is accessible across the entire site.
       3.secure ensures the cookie is sent over secure HTTPS connections only. This is important for sensitive data like tokens. Note that this will only work if your site is served over HTTPS.*/
-      // document.cookie = `accessToken=${result.accessToken}; path=/; secure; max-age=18000`;
-      // document.cookie = `refreshToken=${result.refreshToken}; path=/; secure; max-age=86400`;
-      document.cookie = `accessToken=${result.accessToken}; path=/; max-age=18000`;
-      document.cookie = `refreshToken=${result.refreshToken}; path=/; max-age=86400`;
+      document.cookie = `accessToken=${result.accessToken}; path=/; secure; max-age=18000`;
+      document.cookie = `refreshToken=${result.refreshToken}; path=/; secure; max-age=86400`;
+      // document.cookie = `accessToken=${result.accessToken}; path=/; max-age=18000`;
+      // document.cookie = `refreshToken=${result.refreshToken}; path=/; max-age=86400`;
       localStorage.setItem("userInfo", JSON.stringify(result.user));
       window.location.reload();
       return alert(result.message);
@@ -109,7 +109,7 @@ const userLogout = async () => {
       throw new Error("Access token not found!.");
     }
 
-    const result = await fetch("http://localhost:8000/api/v1/user/logout", {
+    const result = await fetch(`${process.env.REACT_APP_API_URL}/logout`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${accessToken}`,
