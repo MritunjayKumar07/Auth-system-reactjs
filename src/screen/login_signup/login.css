@@ -113,11 +113,21 @@ button:hover {
   transform: scale(1.05);
 }
 
-ul{
+ul {
   display: flex;
   flex-direction: column;
   text-align: left;
   gap: 5px;
+}
+
+form a {
+  color: #ffffff;
+  padding: 10px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @media (max-width: 300px) {

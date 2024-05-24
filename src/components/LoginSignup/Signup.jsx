@@ -45,6 +45,9 @@ function Signup({ pageSelect }) {
           <span onClick={pageSelectLogin}>Login</span>
         </div>
         <button type="submit">Submit</button>
+        <a href="https://wa.me/919835678727" target="_blank">
+          Chat with Mritunjay Kumar
+        </a>
       </form>
     </div>
   );

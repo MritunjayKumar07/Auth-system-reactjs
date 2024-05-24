@@ -29,6 +29,7 @@ function ForgotPassword({ pageSelect }) {
           <span onClick={pageSelectSignup}>Sign Up</span>
         </div>
         <button type="submit">Submit</button>
+        <a href="https://wa.me/919835678727" target="_blank">Chat with Mritunjay Kumar</a>
       </form>
     </div>
   );
